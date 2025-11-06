@@ -154,9 +154,7 @@ form.addEventListener('submit', function(event) {
     
      return;
   }
-  
 
-  
 
       const user = {
             name: fname.value+" "+lname.value,
@@ -186,11 +184,16 @@ const loginPassword=document.getElementById("loginPassword");
     if (storedUser) {
         const parsedUser = JSON.parse(storedUser);
 
-        // Compare the stored password to the typed password
-        if (parsedUser.password === loginPassword.value) {
+       if (parsedUser.passWord === loginPassword.value) {
             alert("Login successful!");
+
+            login.style.display = "none";
+
+        
+            welcomeDiv.style.display = "block";
+            userNameDisplay.textContent = parsedUser.name;
             localStorage.setItem("user", JSON.stringify(parsedUser));
-            window.location.href = "index.html";
+
         } else {
             alert("Incorrect password");
         }
@@ -199,10 +202,16 @@ const loginPassword=document.getElementById("loginPassword");
     }
 });
 const goBack=document.getElementById("goBack");
-goBack.addEventListener("click",function(){
-          container.style.display="block";
+const welcomeDiv = document.getElementById("welcome");
+
+const userNameDisplay = document.getElementById("userNameDisplay");
+const logoutBtn = document.getElementById("logoutBtn");
+logoutBtn.addEventListener("click",function(){
+           container.style.display="block";
     login.style.display="none";
-    
-  
+    welcomeDiv.style.display="none";
+
 })
+
+
 
