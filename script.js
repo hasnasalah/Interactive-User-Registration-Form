@@ -103,33 +103,34 @@ function validateEmail(){
 
 
 function validatePasswordMatch() {
-  password.setCustomValidity("");
-  confPassword.setCustomValidity("");
-  password.classList.remove("invalid");
-  confPassword.classList.remove("invalid");
-  password.classList.add("valid");
-  confPassword.classList.add("valid");
-  passwordError.textContent = "";
-  confPassError.textContent = "";
-  if (password.value.length < 8) {
-    password.setCustomValidity("Password must be exactly 8 characters long!");
+
+password.setCustomValidity("");
+confPassword.setCustomValidity("");
+password.classList.remove("invalid");
+confPassword.classList.remove("invalid");
+password.classList.add("valid");
+confPassword.classList.add("valid");
+passwordError.textContent = "";
+confPassError.textContent = "";
+const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+if (!regex.test(password.value)) {
+    password.setCustomValidity(
+        "Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, and a number!"
+    );
     password.classList.add("invalid");
     password.classList.remove("valid");
     passwordError.textContent = password.validationMessage;
-  } 
-  else if (confPassword.value.length < 8) {
-    confPassword.setCustomValidity("Confirm password must be exactly 8 characters long!");
-    confPassword.classList.add("invalid");
-    confPassword.classList.remove("valid");
-    confPassError.textContent = confPassword.validationMessage;
-  } 
-  else if (password.value !== confPassword.value) {
+} 
+else if (password.value !== confPassword.value) {
     confPassword.setCustomValidity("Passwords do not match!");
     confPassword.classList.add("invalid");
     confPassword.classList.remove("valid");
     confPassError.textContent = confPassword.validationMessage;
-  } 
 }
+
+}
+
 fname.addEventListener("blur", () => validateNameAndLastName(fname, fnameError));
 lname.addEventListener("blur", () => validateNameAndLastName(lname, lnameError));
 username.addEventListener("blur", validateUsername);

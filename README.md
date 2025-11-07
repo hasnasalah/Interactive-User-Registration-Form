@@ -15,13 +15,13 @@ It features real-time input validation, custom error messages, and localStorage-
 ## Technologies Used
 * HTML
 * CSS
-*Javascript
+* Javascript
 
 ## Setup Instructions
 
 Clone or download this repository:
 
-git clone https://github.com/your-username/interactive-form.git
+git clone https://github.com/hasnasalah/Interactive-User-Registration-Form
 
 
 ## Reflection Questions
@@ -55,7 +55,7 @@ Custom messages were carefully phrased to clear, and specific with the use of re
 Each field had its own <span> for displaying the message, and visibility was controlled by adding/removing CSS classes (valid/invalid) during validation.
 
 ## future features:
-Replace localStorage with secure, server-side authentication (e.g., Node.js + database).
+* Replace localStorage with secure, server-side authentication (e.g., Node.js + database).
 
 
 
